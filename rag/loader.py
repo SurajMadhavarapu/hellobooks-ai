@@ -15,7 +15,7 @@ def load_documents(knowledge_base_dir: str) -> list[dict]:
                 "filename": filename,
                 "content": content
             })
-    print(f"✅ Loaded {len(documents)} documents from knowledge base.")
+    print(f" Loaded {len(documents)} documents from knowledge base.")
     return documents
 
 
@@ -41,5 +41,5 @@ def chunk_documents(documents: list[dict], chunk_size: int = 500, overlap: int =
             start += chunk_size - overlap
             chunk_index += 1
 
-    print(f"✅ Created {len(chunks)} chunks from {len(documents)} documents.")
+    print(f" Created {len(chunks)} chunks from {len(documents)} documents.")
     return chunks

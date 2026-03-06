@@ -11,7 +11,7 @@ load_dotenv()
 
 def main():
     print("=" * 50)
-    print("  📚 Hellobooks AI - Accounting Assistant")
+    print("   Hellobooks AI - Accounting Assistant")
     print("=" * 50)
 
     # 1. Load and chunk documents
@@ -25,10 +25,10 @@ def main():
     # 3. Initialize Groq client
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
-        raise ValueError("❌ GROQ_API_KEY not found. Please set it in your .env file.")
+        raise ValueError(" GROQ_API_KEY not found. Please set it in your .env file.")
     groq_client = Groq(api_key=api_key)
 
-    print("\n✅ System ready! Ask me anything about accounting.")
+    print("\n System ready! Ask me anything about accounting.")
     print("   Type 'exit' or 'quit' to stop.\n")
 
     # 4. Q&A Loop
@@ -38,20 +38,20 @@ def main():
         if not query:
             continue
         if query.lower() in ("exit", "quit"):
-            print("👋 Goodbye! Keep your books balanced!")
+            print(" Goodbye! Keep your books balanced!")
             break
 
         # Retrieve relevant chunks
         retrieved = retrieve(query, index, chunks, embedding_model, top_k=3)
 
         # Generate answer
-        print("\n🤖 Hellobooks AI: ", end="", flush=True)
+        print("\n Hellobooks AI: ", end="", flush=True)
         answer = generate_answer(query, retrieved, groq_client)
         print(answer)
 
         # Show sources
         sources = list(set(c["filename"].replace(".md", "").replace("_", " ").title() for c in retrieved))
-        print(f"\n📎 Sources: {', '.join(sources)}")
+        print(f"\n Sources: {', '.join(sources)}")
         print("-" * 50)
 
 
